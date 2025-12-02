@@ -33,10 +33,6 @@ map("n", "<leader>g", function()
   require("neotest").run.run({ strategy = "dap" })
 end, { desc = "Debug Nearest Test" })
 
--- === 5. Git Tree (<leader> + n) ===
--- LazyVimではLazyGitが標準なのでそれを呼び出します
-map("n", "<leader>n", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
-
 -- === 7. デバッグコンソールへ移動 (Ctrl + Shift + F8) ===
 -- DAPのREPL(対話画面)を開いてフォーカスします
 -- ※ ターミナルによっては Shift+F8 が認識されにくい場合があります
