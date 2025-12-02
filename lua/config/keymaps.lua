@@ -37,10 +37,6 @@ end, { desc = "Debug Nearest Test" })
 -- LazyVimではLazyGitが標準なのでそれを呼び出します
 map("n", "<leader>n", "<cmd>LazyGit<cr>", { desc = "LazyGit" })
 
--- === 6. Git 各種ファイル表示 (Ctrl + g) ===
--- VSCodeライクにGit管理画面(LazyGit)を呼び出します
-map("n", "<C-g>", "<cmd>LazyGit<cr>", { desc = "LazyGit (VSCode style)" })
-
 -- === 7. デバッグコンソールへ移動 (Ctrl + Shift + F8) ===
 -- DAPのREPL(対話画面)を開いてフォーカスします
 -- ※ ターミナルによっては Shift+F8 が認識されにくい場合があります
