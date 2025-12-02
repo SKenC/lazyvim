@@ -7,12 +7,6 @@ map("n", "<C-p>", function()
   LazyVim.pick("files")()
 end, { desc = "Find Files (Root Dir)" })
 
--- === 2. デバッグ実行の構成選択・開始 (<leader> + e) ===
--- Space + d + c (Debug Continue) と同じ動作
-map("n", "<leader>e", function()
-  require("dap").continue()
-end, { desc = "Debug: Start/Continue" })
-
 -- === 3. 通常実行 (高速化) (<leader> + r) ===
 -- Snacks.terminal を使用して現在のファイルを Python で実行します
 map("n", "<leader>r", function()
