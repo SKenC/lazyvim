@@ -7,16 +7,6 @@ map("n", "<C-p>", function()
   LazyVim.pick("files")()
 end, { desc = "Find Files (Root Dir)" })
 
--- === 3. 通常実行 (高速化) (<leader> + r) ===
--- Snacks.terminal を使用して現在のファイルを Python で実行します
-map("n", "<leader>r", function()
-  local file = vim.fn.expand("%") -- 現在のファイル名
-  Snacks.terminal({ "python3", file }, {
-    cwd = vim.fn.expand("%:p:h"), -- ファイルのあるディレクトリで実行
-    interactive = true, -- 実行後、出力を確認できるようにターミナルを開いたままにする
-  })
-end, { desc = "Run Python File" })
-
 -- === 4. テスト関連 (<leader> + t / g) ===
 -- カーソル付近のテストを実行
 map("n", "<leader>t", function()
