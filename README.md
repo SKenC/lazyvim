@@ -6,17 +6,17 @@
 
 |コマンド | 内容 |
 |---|---|
-|<leader> + r | debugなしで実行 |
-|<leader> + d + c | debug実行 |
-|<leader> + d + b | breakpoint |
+| `<leader> + r` | debugなしで実行 |
+| `<leader> + d + c` | debug実行 |
+| `<leader> + d + b` | breakpoint |
 
 
 👷テスト関係
 
 |コマンド | 内容 |
 |---|---|
-|<leader> t + r | カーソル近くのテスト実行 |
-|<leader> t + d | カーソル近くのテストデバッグ実行 |
+| `<leader> + t + r` | カーソル近くのテスト実行 |
+| `<leader> + t + d` | カーソル近くのテストデバッグ実行 |
 
 ### install memo
 
