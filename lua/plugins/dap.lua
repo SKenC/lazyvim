@@ -12,6 +12,7 @@ return {
         "<leader>r",
         function()
           local dap = require("dap")
+          local dapui = require("dapui")
           if not dap.configurations.python then
             require("dap.ext.vscode").load_launchjs()
           end
@@ -24,6 +25,8 @@ return {
               local config = vim.deepcopy(choice)
               config.noDebug = true
               config.name = config.name .. " (No Debug)"
+              -- 【追加】ここで明示的にUIを開く
+              dapui.open()
               dap.run(config)
             end
           end)
@@ -31,5 +34,51 @@ return {
         desc = "Run without Debug (launch.json)",
       },
     },
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    -- レイアウト設定（先ほどの内容）
+    opts = {
+      layouts = {
+        {
+          elements = {
+            { id = "console", size = 1.0 },
+          },
+          size = 60,
+          position = "right",
+        },
+        {
+          elements = {
+            { id = "repl", size = 1.0 },
+          },
+          size = 0.25,
+          position = "bottom",
+        },
+      },
+    },
+    -- config関数で動作（リスナー）を定義
+    config = function(_, opts)
+      local dap = require("dap")
+      local dapui = require("dapui")
+
+      -- 設定（opts）を読み込んでUIをセットアップ
+      dapui.setup(opts)
+
+      -- 【ここが重要】デバッグ開始時(初期化時)にUIを自動で開く
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open()
+      end
+
+      -- (任意) デバッグ終了時にUIを自動で閉じる
+      -- 自動で閉じたくなければ、以下の2つのブロックは削除してください
+      -- dap.listeners.before.event_terminated["dapui_config"] = function()
+      --   dapui.close()
+      -- end
+      -- dap.listeners.before.event_exited["dapui_config"] = function()
+      --   dapui.close()
+      -- end
+    end,
   },
 }
